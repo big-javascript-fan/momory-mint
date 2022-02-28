@@ -122,13 +122,13 @@ a:focus,
 }
 /* Navigation */
 #root {
-  width: 90%;
-  max-width: 1200px;
+  /* width: 90%;
+  max-width: 1200px; */
   margin: auto;
 }
 nav {
-  width: 90%;
-  max-width: 1200px;
+  /* width: 90%;
+  max-width: 1200px; */
   margin: auto;
 }
 #menu {
