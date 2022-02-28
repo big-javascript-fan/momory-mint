@@ -175,6 +175,11 @@ nav {
 #logo {
   display: none;
 }
+.logo a {
+  color: white;
+  font-size: 40px;
+  text-decoration: none;
+}
 #menu.navbar-default .navbar-nav > li > a {
   font-family: "Lato", sans-serif;
   text-transform: uppercase;
@@ -185,7 +190,7 @@ nav {
   border-radius: 0;
   margin: 9px 20px 0;
   background-color: transparent;
-
+  display: inline;
   transition: all 0.4s ease-in-out;
 }
 #menu.navbar-default .navbar-nav > li > a:after {
@@ -794,5 +799,10 @@ header .intro-text {
   height: 310px;
   border-radius: 50%;
   overflow: hidden;
-  background: white;
+  background: gray;
+}
+.prayer-label {
+  color: white;
+  font-size: 24px;
+  margin-right: 80px;
 }

@@ -19,8 +19,8 @@ export const Navigation = () => {
       <div className="navbar-bottom">
         <div className="contain" id="navBottom">
           <div className="logo">
-            <a href="http://18.236.89.95/">
-              <img src="img/logo.png" id="logo"></img>
+            <a href="https://thememorymint.com/">
+              The Memory Mint
             </a>
           </div>
           <div className="navbar-list">
@@ -30,7 +30,8 @@ export const Navigation = () => {
             >
               <ul className="nav navbar-nav navbar-right">
                 <li>
-                  <a href="#contact" className="page-scroll">
+                  <span className="prayer-label">#PRAYERS4UKRAINIANS</span>
+                  <a href="/" className="page-scroll">
                     Home
                   </a>
                 </li>

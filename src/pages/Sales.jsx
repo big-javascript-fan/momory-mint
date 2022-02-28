@@ -160,7 +160,7 @@ export const Sales = () => {
             </div>
             <div className="pricing-view">
               <div className="gltf-content" style={{ display: showHair ? 'block' : 'none'}}>
-                <Canvas camera={{ position: [-10, 15, 15], fov: 50 }}>
+                <Canvas camera={{ position: [0, 0, 20], fov: 50 }}>
                   <ambientLight intensity={1} />
                   <Suspense fallback={null}>
                     <ModelHair />
@@ -177,7 +177,7 @@ export const Sales = () => {
             <div className="pricing-table">
               <div className="left-table">
                 <div className="header">
-                  <p className="title">"PLAYING WITH MY HAIR"</p>
+                  <p className="title">"MONKEY KISS"</p>
                   <p className="paragraph">Pre-sale Now Available</p>
                 </div>
                 <div className="content-top">
@@ -210,7 +210,7 @@ export const Sales = () => {
               </div>
               <div className="right-table">
                 <div className="header">
-                  <p className="title">"KISS"</p>
+                  <p className="title">"MONKEY KISS"</p>
                   <p className="paragraph">General Sale Begin March 4, 2022</p>
                 </div>
                 <div className="content-top">
@@ -240,7 +240,7 @@ export const Sales = () => {
             </div>
             <div className="pricing-view">
               <div className="gltf-content" style={{ display: showKiss ? 'block' : 'none'}}>
-                <Canvas camera={{ position: [-10, 15, 15], fov: 50 }}>
+                <Canvas camera={{ position: [0, 0, 20], fov: 50 }}>
                   <ambientLight intensity={1} />
                   <Suspense fallback={null}>
                     <ModelKiss />
@@ -257,7 +257,7 @@ export const Sales = () => {
             <div className="pricing-table">
               <div className="left-table">
                 <div className="header">
-                  <p className="title">"EYE"</p>
+                  <p className="title">"THOSE EYES"</p>
                   <p className="paragraph">Pre-sale Now Available</p>
                 </div>
                 <div className="content-top">
@@ -290,7 +290,7 @@ export const Sales = () => {
               </div>
               <div className="right-table">
                 <div className="header">
-                  <p className="title">"PLAYING WITH MY HAIR"</p>
+                  <p className="title">"THOSE EYES"</p>
                   <p className="paragraph">General Sale Begin March 4, 2022</p>
                 </div>
                 <div className="content-top">
