@@ -783,3 +783,16 @@ header .intro-text {
   font-size: 20px;
   color: #fff;
 }
+.pricing-view {
+  position: relative;
+}
+.gltf-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 310px;
+  height: 310px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: white;
+}

@@ -1,7 +1,67 @@
-import React, { useState, useEffect } from "react"
+import React, { Suspense, useRef, useState, useEffect } from "react";
+import { Canvas } from "react-three-fiber";
+import { OrbitControls, useGLTF, useAnimations } from "@react-three/drei";
 import "../assets/css/sales.scss"
 
+function ModelHair(props) {
+  const group = useRef();
+  const { scene, animations } = useGLTF("/hair.glb");
+
+  const { actions } = useAnimations(animations, group);
+  useEffect(() => {
+    Object.keys(actions).map(key => {
+      actions[key].play();
+    });
+  });
+
+  return (
+    <group ref={group} {...props} dispose={null}>
+      <primitive object={scene} />
+    </group>
+  );
+}
+
+
+function ModelKiss(props) {
+  const group = useRef();
+  const { scene, animations } = useGLTF("/kiss.glb");
+
+  const { actions } = useAnimations(animations, group);
+  useEffect(() => {
+    Object.keys(actions).map(key => {
+      actions[key].play();
+    });
+  });
+
+  return (
+    <group ref={group} {...props} dispose={null}>
+      <primitive object={scene} />
+    </group>
+  );
+}
+
+function ModelEye(props) {
+  const group = useRef();
+  const { scene, animations } = useGLTF("/eye.glb");
+
+  const { actions } = useAnimations(animations, group);
+  useEffect(() => {
+    Object.keys(actions).map(key => {
+      actions[key].play();
+    });
+  });
+
+  return (
+    <group ref={group} {...props} dispose={null}>
+      <primitive object={scene} />
+    </group>
+  );
+}
+
 export const Sales = () => {
+  const [showHair, revealHair] = useState(false);
+  const [showKiss, revealKiss] = useState(false);
+  const [showEye, revealEye] = useState(false);
   return (
     <div id="sales" className=" scroller" style={{ "margin-top": "150px" }}>
       <div className="contain">
@@ -65,7 +125,7 @@ export const Sales = () => {
                   </ul>
                 </div>
                 <div className="content-btn">
-                  <a className="btn btn-custom">BUY NOW</a>
+                  <a className="btn btn-custom" onClick={e => { e.preventDefault(); }}>COMING SOON</a>
                 </div>
               </div>
               <div className="right-table">
@@ -99,7 +159,16 @@ export const Sales = () => {
               </div>
             </div>
             <div className="pricing-view">
-              <a href="#">
+              <div className="gltf-content" style={{ display: showHair ? 'block' : 'none'}}>
+                <Canvas camera={{ position: [-10, 15, 15], fov: 50 }}>
+                  <ambientLight intensity={1} />
+                  <Suspense fallback={null}>
+                    <ModelHair />
+                  </Suspense>
+                  <OrbitControls />
+                </Canvas>
+              </div>
+              <a href="#" onClick={e => { e.preventDefault(); revealHair(true); }}>
                 <img src="img/clicktoview.png" />
               </a>
             </div>
@@ -136,12 +205,12 @@ export const Sales = () => {
                   </ul>
                 </div>
                 <div className="content-btn">
-                  <a className="btn btn-custom">BUY NOW</a>
+                  <a className="btn btn-custom" onClick={e => { e.preventDefault(); }}>COMING SOON</a>
                 </div>
               </div>
               <div className="right-table">
                 <div className="header">
-                  <p className="title">"PLAYING WITH MY HAIR"</p>
+                  <p className="title">"KISS"</p>
                   <p className="paragraph">General Sale Begin March 4, 2022</p>
                 </div>
                 <div className="content-top">
@@ -170,7 +239,16 @@ export const Sales = () => {
               </div>
             </div>
             <div className="pricing-view">
-              <a href="#">
+              <div className="gltf-content" style={{ display: showKiss ? 'block' : 'none'}}>
+                <Canvas camera={{ position: [-10, 15, 15], fov: 50 }}>
+                  <ambientLight intensity={1} />
+                  <Suspense fallback={null}>
+                    <ModelKiss />
+                  </Suspense>
+                  <OrbitControls />
+                </Canvas>
+              </div>
+              <a href="#" onClick={e => { e.preventDefault(); revealKiss(true); }}>
                 <img src="img/clicktoview.png" />
               </a>
             </div>
@@ -179,7 +257,7 @@ export const Sales = () => {
             <div className="pricing-table">
               <div className="left-table">
                 <div className="header">
-                  <p className="title">"PLAYING WITH MY HAIR"</p>
+                  <p className="title">"EYE"</p>
                   <p className="paragraph">Pre-sale Now Available</p>
                 </div>
                 <div className="content-top">
@@ -207,7 +285,7 @@ export const Sales = () => {
                   </ul>
                 </div>
                 <div className="content-btn">
-                  <a className="btn btn-custom">BUY NOW</a>
+                  <a className="btn btn-custom" onClick={e => { e.preventDefault(); }}>COMING SOON</a>
                 </div>
               </div>
               <div className="right-table">
@@ -241,7 +319,16 @@ export const Sales = () => {
               </div>
             </div>
             <div className="pricing-view">
-              <a href="#">
+              <div className="gltf-content" style={{ display: showEye ? 'block' : 'none'}}>
+                <Canvas camera={{ position: [-10, 15, 15], fov: 50 }}>
+                  <ambientLight intensity={1} />
+                  <Suspense fallback={null}>
+                    <ModelEye />
+                  </Suspense>
+                  <OrbitControls />
+                </Canvas>
+              </div>
+              <a href="#" onClick={e => { e.preventDefault(); revealEye(true); }}>
                 <img src="img/clicktoview.png" />
               </a>
             </div>
@@ -253,12 +340,12 @@ export const Sales = () => {
             <span>Complete an entire series and receive the following:</span>
             <ul>
               <li>
-                Special SERIES NFT awarded only to holders of compltee series.
+                Special SERIES NFT awarded only to holders of complete series.
               </li>
-              <li>Access to Sommer;s Personal Memory Vault</li>
+              <li>Access to Sommer's Personal Memory Vault</li>
               <li>
                 Invitation to regular meet and greets with Sommer in her Memory
-                vault
+                Vault
               </li>
             </ul>
           </div>
@@ -279,24 +366,24 @@ export const Sales = () => {
             <span>ROADMAP FOR FUTURE RELEASE:</span>
             <ul>
               <li>
-                ERIES B, featuring memories from Sommer's visit to Machu Picchu
-                drops MARCH 5, 2022.
+                SERIES B, featuring memories from Sommer's visit to Machu Picchu
+                drops MARCH 11, 2022.
               </li>
               <li>
                 Special, ultra-rare, one-of-one NFT "Becoming the Brand"
-                announcement on MARCH 5, 2022.
+                announcement on MARCH 11, 2022.
               </li>
               <li>
                 SERIES C, featuring memories from Sommer's 2019 trip to Tokyo
                 drops MARCH 18, 2022.
               </li>
               <li>
-                Future series TBA, featuring memories from in around Sommer's
+                Future series TBA, featuring memories from Sommer's
                 home in Bondi Beach, Australia.
               </li>
               <li>
                 Special, limited edition drop of Sommer's work-out routine,
-                featuring special guests adn celebrity trainers, launching in
+                featuring special guests and celebrity trainers, launching in
                 Q2, 2022.
               </li>
             </ul>
