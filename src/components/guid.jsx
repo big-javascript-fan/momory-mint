@@ -6,7 +6,7 @@ export const Guid = () => {
           <div className="title">
             <h1>YOUR TICKET TO THE METAVERSE</h1>
             <a
-              href="http://www.thememorymint.com/sommer"
+              href="https://project7933.com/e8CJXuK/memory-mint"
               className="btn btn-custom"
             >
               Experience sample Memory Vault

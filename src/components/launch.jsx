@@ -5,7 +5,7 @@ export const Launch = (props) => {
         <div className="launch-text">
           <h1>{props.data ? props.data.title : "Loading"}</h1>
           <p>{props.data ? props.data.paragraph : "Loading"}</p>
-          <a href className="btn btn-custom">
+          <a href="/sommer" className="btn btn-custom">
             Launch sample
           </a>
         </div>
