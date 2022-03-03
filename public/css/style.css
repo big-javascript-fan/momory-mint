@@ -799,10 +799,84 @@ header .intro-text {
   height: 310px;
   border-radius: 50%;
   overflow: hidden;
-  background: gray;
+  background: #2c80ff;
+  box-shadow: 0px 0px 20px #26dcf9;
 }
 .prayer-label {
   color: white;
   font-size: 24px;
   margin-right: 80px;
+}
+
+@media (max-width: 800px) {
+  .about-text {
+    flex-flow: column !important;
+  }
+
+  #about .about-text {
+    flex-flow: column-reverse !important;
+  }
+
+  .about-text .content, #announce h1 {
+    width: 100%;
+    text-align: center !important;
+    margin-right: 0;
+    padding: 0;
+  }
+
+  .about-text .title {
+    width: 100% !important;
+  }
+
+  .about-text .paragraph {
+    width: 100% !important;
+    margin-top: 20px !important;
+  }
+
+  .contain {
+    flex-flow: column !important;
+  }
+
+  .article .content h1 {
+    font-size:  28px !important;
+  }
+  .navbar-header, .navbar-bottom {
+    width: 100vw !important;
+  }
+
+  .service {
+    flex-flow: column !important;
+  }
+  .service .pricing-table {
+    width: 100% !important;
+    margin-bottom: 20px !important;
+  }
+  #sales .content3, #sales .content2 {
+    margin-left: 0 !important;
+    margin-bottom: 0 !important;
+    text-align: center !important;
+    padding: 20px;
+  }
+  .content3 .paragraph2 {
+    width: 100% !important;
+  }
+
+  #sales .content2 {
+    margin-top: 350px !important;
+  }
+  #sales .avatar {
+    width: 80% !important;
+  }
+  #sales .content1 {
+    padding: 20px !important;
+    text-align: center !important;
+  }
+  #sales .content1 .title {
+    width: 100% !important;
+    display: none !important;
+  }
+  #sales .content1 .paragraph {
+    font-size: 40px !important;
+    color: white !important;
+  }
 }
