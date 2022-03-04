@@ -1,7 +1,25 @@
 import React, { Suspense, useRef, useState, useEffect } from "react";
 import { Canvas } from "react-three-fiber";
 import { OrbitControls, useGLTF, useAnimations } from "@react-three/drei";
+import { FullscreenImg } from '../components/fullscreenImg';
+import HAIRPLAY1 from '../assets/img/gallery/HAIRPLAY1.png';
+import HAIRPLAY2 from '../assets/img/gallery/HAIRPLAY2.png';
+import HAIRPLAY3 from '../assets/img/gallery/HAIRPLAY3.png';
+import HAIRPLAY4 from '../assets/img/gallery/HAIRPLAY4.png';
+import HAIRPLAY5 from '../assets/img/gallery/HAIRPLAY5.png';
+import MONKEYKISS1 from '../assets/img/gallery/MONKEYKISS1.png';
+import MONKEYKISS2 from '../assets/img/gallery/MONKEYKISS2.png';
+import MONKEYKISS3 from '../assets/img/gallery/MONKEYKISS3.png';
+import MONKEYKISS4 from '../assets/img/gallery/MONKEYKISS4.png';
+import MONKEYKISS5 from '../assets/img/gallery/MONKEYKISS5.png';
+import THOSEEYES1 from '../assets/img/gallery/THOSEEYES1.png';
+import THOSEEYES2 from '../assets/img/gallery/THOSEEYES2.png';
+import THOSEEYES3 from '../assets/img/gallery/THOSEEYES3.png';
+import THOSEEYES4 from '../assets/img/gallery/THOSEEYES4.png';
+import THOSEEYES5 from '../assets/img/gallery/THOSEEYES5.png';
+import ImgsViewer from 'react-images-viewer';
 import "../assets/css/sales.scss"
+import { Fullscreen3d } from "../components/fullscreen3d";
 
 function ModelHair(props) {
   const group = useRef();
@@ -62,6 +80,70 @@ export const Sales = () => {
   const [showHair, revealHair] = useState(false);
   const [showKiss, revealKiss] = useState(false);
   const [showEye, revealEye] = useState(false);
+  const [isShowFullscreenImg, setShowFullscreenImg] = useState(false);
+  const [selectedImg, setSelectedImg] = useState(null);
+  const [isShowFullscreen3d, setShowFullscreen3d] = useState(false);
+  const [selected3d, setSelected3d] = useState(null);
+
+  const handleSelectImg = (img) => {
+    setSelectedImg(img);
+    setShowFullscreenImg(true);
+  }
+  const handleShowFullscreen3dModel = (type) => {
+    let model = null;
+    if (type === 'hair') {
+      model = (
+        <Canvas camera={{ position: [0, 0, 50], fov: 50 }}>
+          <ambientLight intensity={1} />
+          <Suspense fallback={null}>
+            <ModelHair />
+          </Suspense>
+          <OrbitControls />
+        </Canvas>
+        );
+    } else if (type === 'kiss') {
+      model = (
+        <Canvas camera={{ position: [0, 0, 50], fov: 50 }}>
+          <ambientLight intensity={1} />
+          <Suspense fallback={null}>
+            <ModelKiss />
+          </Suspense>
+          <OrbitControls />
+        </Canvas>
+        );
+    } else {
+      model = (
+        <Canvas camera={{ position: [0, 0, 50], fov: 50 }}>
+          <ambientLight intensity={1} />
+          <Suspense fallback={null}>
+            <ModelEye />
+          </Suspense>
+          <OrbitControls />
+        </Canvas>
+        );
+    }
+    setSelected3d(model);
+    setShowFullscreen3d(true);
+  }
+  const hairPlayImages = [0, 1, 2, 3, 4, 5].map((value) => {
+    return {
+      src: `/img/gallery/HAIRPLAY${value + 1}.png`,
+      thumbnail: `/img/thumbnails/HAIRPLAY${value + 1}.png`
+    }
+  });
+  const monkeyKissImages = [0, 1, 2, 3, 4, 5].map((value) => {
+    return {
+      src: `/img/gallery/MONKEYKISS${value + 1}.png`,
+      thumbnail: `/img/thumbnails/MONKEYKISS${value + 1}.png`
+    }
+  });
+  const thoseEyesImages = [0, 1, 2, 3, 4, 5].map((value) => {
+    return {
+      src: `/img/gallery/THOSEEYES${value + 1}.png`,
+      thumbnail: `/img/thumbnails/THOSEEYES${value + 1}.png`
+    }
+  });
+
   return (
     <div id="sales" className=" scroller" style={{ "margin-top": "150px" }}>
       <div className="contain">
@@ -159,18 +241,12 @@ export const Sales = () => {
               </div>
             </div>
             <div className="pricing-view">
-              <div className="gltf-content" style={{ display: showHair ? 'block' : 'none'}}>
-                <Canvas camera={{ position: [0, 0, 20], fov: 50 }}>
-                  <ambientLight intensity={1} />
-                  <Suspense fallback={null}>
-                    <ModelHair />
-                  </Suspense>
-                  <OrbitControls />
-                </Canvas>
-              </div>
-              <a href="#" onClick={e => { e.preventDefault(); revealHair(true); }}>
-                <img src="img/clicktoview.png" />
-              </a>
+              <img src={HAIRPLAY1} onClick={e => handleSelectImg(HAIRPLAY1)} />
+              <img src={HAIRPLAY2} onClick={e => handleSelectImg(HAIRPLAY2)} />
+              <img src={HAIRPLAY3} onClick={e => handleSelectImg(HAIRPLAY3)} />
+              <img src={HAIRPLAY4} onClick={e => handleSelectImg(HAIRPLAY4)} />
+              <img src={HAIRPLAY5} onClick={e => handleSelectImg(HAIRPLAY5)} />
+              <div className="click-view" onClick={e => handleShowFullscreen3dModel('hair')}>Launch Model</div>
             </div>
           </div>
           <div className="service" id="serviceKiss">
@@ -239,18 +315,12 @@ export const Sales = () => {
               </div>
             </div>
             <div className="pricing-view">
-              <div className="gltf-content" style={{ display: showKiss ? 'block' : 'none'}}>
-                <Canvas camera={{ position: [0, 0, 20], fov: 50 }}>
-                  <ambientLight intensity={1} />
-                  <Suspense fallback={null}>
-                    <ModelKiss />
-                  </Suspense>
-                  <OrbitControls />
-                </Canvas>
-              </div>
-              <a href="#" onClick={e => { e.preventDefault(); revealKiss(true); }}>
-                <img src="img/clicktoview.png" />
-              </a>
+              <img src={MONKEYKISS1} onClick={e => handleSelectImg(MONKEYKISS1)} />
+              <img src={MONKEYKISS2} onClick={e => handleSelectImg(MONKEYKISS2)} />
+              <img src={MONKEYKISS3} onClick={e => handleSelectImg(MONKEYKISS3)} />
+              <img src={MONKEYKISS4} onClick={e => handleSelectImg(MONKEYKISS4)} />
+              <img src={MONKEYKISS5} onClick={e => handleSelectImg(MONKEYKISS5)} />
+              <div className="click-view" onClick={e => handleShowFullscreen3dModel('kiss')}>Launch Model</div>
             </div>
           </div>
           <div className="service" id="serviceEyes">
@@ -319,18 +389,12 @@ export const Sales = () => {
               </div>
             </div>
             <div className="pricing-view">
-              <div className="gltf-content" style={{ display: showEye ? 'block' : 'none'}}>
-                <Canvas camera={{ position: [-10, 15, 15], fov: 50 }}>
-                  <ambientLight intensity={1} />
-                  <Suspense fallback={null}>
-                    <ModelEye />
-                  </Suspense>
-                  <OrbitControls />
-                </Canvas>
-              </div>
-              <a href="#" onClick={e => { e.preventDefault(); revealEye(true); }}>
-                <img src="img/clicktoview.png" />
-              </a>
+              <img src={THOSEEYES1} onClick={e => handleSelectImg(THOSEEYES1)} />
+              <img src={THOSEEYES2} onClick={e => handleSelectImg(THOSEEYES2)} />
+              <img src={THOSEEYES3} onClick={e => handleSelectImg(THOSEEYES3)} />
+              <img src={THOSEEYES4} onClick={e => handleSelectImg(THOSEEYES4)} />
+              <img src={THOSEEYES5} onClick={e => handleSelectImg(THOSEEYES5)} />
+              <div className="click-view" onClick={e => handleShowFullscreen3dModel('eyes')}>Launch Model</div>
             </div>
           </div>
         </div>
@@ -391,6 +455,12 @@ export const Sales = () => {
         </div>
         <div className="avatar"></div>
       </div>
+      { isShowFullscreenImg && 
+        <FullscreenImg img={selectedImg} closeFullScreen={() => setShowFullscreenImg(false)} />
+      }
+      { isShowFullscreen3d && 
+        <Fullscreen3d component={selected3d} closeFullScreen={() => setShowFullscreen3d(false)} />
+      }
     </div>
   )
 }

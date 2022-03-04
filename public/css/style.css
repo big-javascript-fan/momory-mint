@@ -789,7 +789,52 @@ header .intro-text {
   color: #fff;
 }
 .pricing-view {
-  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+@media (max-width: 1200px) {
+  .pricing-view {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 800px) {
+  .pricing-view {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.pricing-view img {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  box-shadow: 0 0 10px white;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all .2s ease-in-out;
+}
+.pricing-view img:hover {
+  transform: scale(1.2);
+}
+.pricing-view div {
+  width: 160px;
+  height: 160px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px;
+  color: white;
+  font-weight: 500;
+  text-transform: uppercase;
+  padding: 10px;
+  background: black;
+  box-shadow: 0 0 10px white;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: center;
+  transition: all .2s ease-in-out;
+}
+.pricing-view div:hover {
+  transform: scale(1.2);
 }
 .gltf-content {
   position: absolute;
