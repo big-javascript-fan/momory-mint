@@ -116,8 +116,6 @@ export const Sales = () => {
     if(!account) {
       activateBrowserWallet();
     } else {
-      const web3 = new Web3(library.provider);
-      const contract = new web3.eth.Contract(NFT_ABI, '0xdFB95Fc9D00153e348c32A2cF4B120222ED3Aeb9');
       let currentAmount = hairAmount;
       if(type === 2) {
         currentAmount = kissAmount;
@@ -128,6 +126,8 @@ export const Sales = () => {
       if (currentAmount > 0) {
         setIsMinting(true);
         try {
+          const web3 = new Web3(library.provider);
+          const contract = new web3.eth.Contract(NFT_ABI, '0xdFB95Fc9D00153e348c32A2cF4B120222ED3Aeb9');
           const price = await contract.methods.currentPrice().call();
           await contract.methods.mint(type, currentAmount).send({
             from: account,

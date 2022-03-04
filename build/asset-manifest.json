@@ -1,0 +1,40 @@
+{
+  "files": {
+    "main.css": "/static/css/main.ee2e759d.chunk.css",
+    "main.js": "/static/js/main.9ed4f207.chunk.js",
+    "main.js.map": "/static/js/main.9ed4f207.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.48ef0f6f.js",
+    "runtime-main.js.map": "/static/js/runtime-main.48ef0f6f.js.map",
+    "static/css/2.f4c56af9.chunk.css": "/static/css/2.f4c56af9.chunk.css",
+    "static/js/2.5690ceb1.chunk.js": "/static/js/2.5690ceb1.chunk.js",
+    "static/js/2.5690ceb1.chunk.js.map": "/static/js/2.5690ceb1.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.f4c56af9.chunk.css.map": "/static/css/2.f4c56af9.chunk.css.map",
+    "static/css/main.ee2e759d.chunk.css.map": "/static/css/main.ee2e759d.chunk.css.map",
+    "static/js/2.5690ceb1.chunk.js.LICENSE.txt": "/static/js/2.5690ceb1.chunk.js.LICENSE.txt",
+    "static/media/HAIRPLAY1.df12bc40.png": "/static/media/HAIRPLAY1.df12bc40.png",
+    "static/media/HAIRPLAY2.adc49dfe.png": "/static/media/HAIRPLAY2.adc49dfe.png",
+    "static/media/HAIRPLAY3.5fce0d85.png": "/static/media/HAIRPLAY3.5fce0d85.png",
+    "static/media/HAIRPLAY4.9f3a6961.png": "/static/media/HAIRPLAY4.9f3a6961.png",
+    "static/media/HAIRPLAY5.b0494b65.png": "/static/media/HAIRPLAY5.b0494b65.png",
+    "static/media/sales.scss": "/static/media/JLoDess.b5048c73.png",
+    "static/media/MONKEYKISS1.ddf3d078.png": "/static/media/MONKEYKISS1.ddf3d078.png",
+    "static/media/MONKEYKISS2.6f6cd18e.png": "/static/media/MONKEYKISS2.6f6cd18e.png",
+    "static/media/MONKEYKISS3.eb36fc0e.png": "/static/media/MONKEYKISS3.eb36fc0e.png",
+    "static/media/MONKEYKISS4.3d627a95.png": "/static/media/MONKEYKISS4.3d627a95.png",
+    "static/media/MONKEYKISS5.985f6b30.png": "/static/media/MONKEYKISS5.985f6b30.png",
+    "static/media/THOSEEYES1.d04bfb11.png": "/static/media/THOSEEYES1.d04bfb11.png",
+    "static/media/THOSEEYES2.1509c4de.png": "/static/media/THOSEEYES2.1509c4de.png",
+    "static/media/THOSEEYES3.c3a6c7a3.png": "/static/media/THOSEEYES3.c3a6c7a3.png",
+    "static/media/THOSEEYES4.299f0963.png": "/static/media/THOSEEYES4.299f0963.png",
+    "static/media/THOSEEYES5.bf57c22e.png": "/static/media/THOSEEYES5.bf57c22e.png",
+    "static/media/close-button.47dd7fbc.svg": "/static/media/close-button.47dd7fbc.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.48ef0f6f.js",
+    "static/css/2.f4c56af9.chunk.css",
+    "static/js/2.5690ceb1.chunk.js",
+    "static/css/main.ee2e759d.chunk.css",
+    "static/js/main.9ed4f207.chunk.js"
+  ]
+}
