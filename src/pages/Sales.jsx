@@ -1,4 +1,5 @@
 import React, { Suspense, useRef, useState, useEffect } from "react";
+import { useEtherBalance, useEthers } from '@usedapp/core'
 import { Canvas } from "react-three-fiber";
 import { OrbitControls, useGLTF, useAnimations } from "@react-three/drei";
 import { FullscreenImg } from '../components/fullscreenImg';
@@ -20,6 +21,10 @@ import THOSEEYES5 from '../assets/img/gallery/THOSEEYES5.png';
 import ImgsViewer from 'react-images-viewer';
 import "../assets/css/sales.scss"
 import { Fullscreen3d } from "../components/fullscreen3d";
+import Web3 from 'web3';
+import { NFT_ABI } from "../contract/NFT";
+import { toast } from 'react-toastify';
+import { Loader } from "../components/loader";
 
 function ModelHair(props) {
   const group = useRef();
@@ -77,13 +82,61 @@ function ModelEye(props) {
 }
 
 export const Sales = () => {
-  const [showHair, revealHair] = useState(false);
-  const [showKiss, revealKiss] = useState(false);
-  const [showEye, revealEye] = useState(false);
   const [isShowFullscreenImg, setShowFullscreenImg] = useState(false);
   const [selectedImg, setSelectedImg] = useState(null);
   const [isShowFullscreen3d, setShowFullscreen3d] = useState(false);
   const [selected3d, setSelected3d] = useState(null);
+  const [isMinting, setIsMinting] = useState(false);
+  const [hairAmount, setHairAmount] = useState(0);
+  const [kissAmount, setKissAmount] = useState(0);
+  const [eyesAmount, setEyesAmount] = useState(0);
+  const [canMint, setCanMint] = useState(false);
+
+  const { activateBrowserWallet, account, library } = useEthers()
+
+  useEffect(() => {
+    handleContractStatus();
+  }, [account])
+
+  const handleContractStatus = async () => {
+    if (library) {
+      const web3 = new Web3(library.provider);
+      const contract = new web3.eth.Contract(NFT_ABI, '0xdFB95Fc9D00153e348c32A2cF4B120222ED3Aeb9');
+  
+      const presaleActive = await contract.methods.presaleActive().call();
+      const publicSaleActive = await contract.methods.publicSaleActive().call();
+  
+      if (presaleActive || publicSaleActive) {
+        setCanMint(true);
+      }
+    }
+  }
+
+  const handleMint = async (type) => {
+    if(!account) {
+      activateBrowserWallet();
+    } else {
+      setIsMinting(true);
+      console.log('library', library);
+      const web3 = new Web3(library.provider);
+      const contract = new web3.eth.Contract(NFT_ABI, '0xdFB95Fc9D00153e348c32A2cF4B120222ED3Aeb9');
+      let currentAmount = hairAmount;
+      if(type === 2) {
+        currentAmount = kissAmount;
+      } else if (type === 3) {
+        currentAmount = eyesAmount;
+      }
+
+      const price = await contract.methods.currentPrice().call();
+      await contract.methods.mint(type, currentAmount).send({
+        from: account,
+        value: price * currentAmount
+      });
+
+      setIsMinting(false);
+      toast("Mint Success!")
+    }
+  }
 
   const handleSelectImg = (img) => {
     setSelectedImg(img);
@@ -145,7 +198,7 @@ export const Sales = () => {
   });
 
   return (
-    <div id="sales" className=" scroller" style={{ "margin-top": "150px" }}>
+    <div id="sales" className=" scroller" style={{ marginTop: "150px" }}>
       <div className="contain">
         <div className="content1">
           <div className="title">THE MEMORY MINT</div>
@@ -206,8 +259,15 @@ export const Sales = () => {
                     </li>
                   </ul>
                 </div>
+                <div className="content-amount">
+                  { canMint ?
+                    <input type="number" className="nft-amount" onChange={e => setHairAmount(e.target.value)} />
+                    :
+                    <input type="number" className="nft-amount" disabled />
+                  }
+                </div>
                 <div className="content-btn">
-                  <a className="btn btn-custom" onClick={e => { e.preventDefault(); }}>COMING SOON</a>
+                  <a className="btn btn-custom" onClick={e => { e.preventDefault(); handleMint(1); }}>{ account ? 'MINT' : 'CONNECT WALLET' }</a>
                 </div>
               </div>
               <div className="right-table">
@@ -280,8 +340,15 @@ export const Sales = () => {
                     </li>
                   </ul>
                 </div>
+                <div className="content-amount">
+                  { canMint ?
+                    <input type="number" className="nft-amount" onChange={e => setKissAmount(e.target.value)} />
+                    :
+                    <input type="number" className="nft-amount" disabled />
+                  }
+                </div>
                 <div className="content-btn">
-                  <a className="btn btn-custom" onClick={e => { e.preventDefault(); }}>COMING SOON</a>
+                  <a className="btn btn-custom" onClick={e => { e.preventDefault(); handleMint(2); }}>{ account ? 'MINT' : 'CONNECT WALLET' }</a>
                 </div>
               </div>
               <div className="right-table">
@@ -354,8 +421,15 @@ export const Sales = () => {
                     </li>
                   </ul>
                 </div>
+                <div className="content-amount">
+                  { canMint ?
+                    <input type="number" className="nft-amount" onChange={e => setEyesAmount(e.target.value)} />
+                    :
+                    <input type="number" className="nft-amount" disabled />
+                  }
+                </div>
                 <div className="content-btn">
-                  <a className="btn btn-custom" onClick={e => { e.preventDefault(); }}>COMING SOON</a>
+                  <a className="btn btn-custom" onClick={e => { e.preventDefault(); handleMint(3); }}>{ account ? 'MINT' : 'CONNECT WALLET' }</a>
                 </div>
               </div>
               <div className="right-table">
@@ -460,6 +534,9 @@ export const Sales = () => {
       }
       { isShowFullscreen3d && 
         <Fullscreen3d component={selected3d} closeFullScreen={() => setShowFullscreen3d(false)} />
+      }
+      { isMinting &&
+        <Loader content="Mint in progress..." />
       }
     </div>
   )
