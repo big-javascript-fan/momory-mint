@@ -800,7 +800,7 @@ header .intro-text {
 }
 @media (max-width: 800px) {
   .pricing-view {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 .pricing-view img {
