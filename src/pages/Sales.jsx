@@ -282,7 +282,7 @@ export const Sales = () => {
               <div className="right-table">
                 <div className="header">
                   <p className="title">"PLAYING WITH MY HAIR"</p>
-                  <p className="paragraph">General Sale Begin March 4, 2022</p>
+                  <p className="paragraph">General Sale Begin TBD</p>
                 </div>
                 <div className="content-top">
                   <span>ETH</span>
@@ -363,7 +363,7 @@ export const Sales = () => {
               <div className="right-table">
                 <div className="header">
                   <p className="title">"MONKEY KISS"</p>
-                  <p className="paragraph">General Sale Begin March 4, 2022</p>
+                  <p className="paragraph">General Sale Begin TBD</p>
                 </div>
                 <div className="content-top">
                   <span>ETH</span>
@@ -444,7 +444,7 @@ export const Sales = () => {
               <div className="right-table">
                 <div className="header">
                   <p className="title">"THOSE EYES"</p>
-                  <p className="paragraph">General Sale Begin March 4, 2022</p>
+                  <p className="paragraph">General Sale Begin TBD</p>
                 </div>
                 <div className="content-top">
                   <span>ETH</span>
