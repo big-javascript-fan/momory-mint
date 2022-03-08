@@ -29,7 +29,6 @@ export const Dashboard = () => {
   return (
     <div>
       <Header data={landingPageData.Header} />
-      <About data={landingPageData.About} />
       <Gallery />
       <Announce data={landingPageData.Announce} />
       <Features />

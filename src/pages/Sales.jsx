@@ -207,7 +207,7 @@ export const Sales = () => {
   });
 
   return (
-    <div id="sales" className=" scroller" style={{ marginTop: "150px" }}>
+    <div id="sales" className=" scroller" style={{ marginTop: "120px" }}>
       <div className="contain">
         <div className="content1">
           <div className="title">THE MEMORY MINT</div>

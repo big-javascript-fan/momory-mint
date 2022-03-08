@@ -19,7 +19,7 @@ export const Navigation = () => {
       <div className="navbar-bottom">
         <div className="contain" id="navBottom">
           <div className="logo">
-            <a href="https://thememorymint.com/">
+            <a href="http://thememorymint.com/">
               The Memory Mint
             </a>
           </div>
